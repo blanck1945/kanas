@@ -1,13 +1,20 @@
 import React from "react";
 import styled from "styled-components";
+import GlobalStyles from "../styles/GlobalStyles";
+
+// Global Styles.
+const {
+  colors: { mainBlue },
+} = GlobalStyles;
 
 const Navbar = styled.nav`
-  background-color: red;
+  background-color: ${mainBlue};
+  color: white;
   width: 100%;
   height: 50px;
   display: flex;
   align-items: center;
-  padding-left: 5px;
+  padding-left: 10px;
 `;
 
 const Navigation = () => {
