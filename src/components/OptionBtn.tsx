@@ -24,14 +24,14 @@ const OptionBtn = ({
 }: OptionBtnProps) => {
   const Button = styled.span`
     height: 45px;
-    width: ${exit ? "15%" : "35%"};
+    width: ${exit ? "60px" : "90px"};
     background-color: ${mainGray};
     color: ${mainBlue};
     border: 1px solid ${mainBlue};
     padding: 12px;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
     cursor: pointer;
     margin: ${exit ? "auto" : ""};
     margin-top: ${exit ? "20px" : "0px"};
