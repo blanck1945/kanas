@@ -31,7 +31,7 @@ const KanaInput = ({ kanaOptions, responseReport }: KanaInputInterface) => {
   // Function to get on Kana.
   const memo = useMemo(() => {
     return word();
-  }, []);
+  }, [word]);
 
   // Hook to handler user response and response value.
   const [input, setInput] = useState<any>({
