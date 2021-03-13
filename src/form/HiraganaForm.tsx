@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import JapaneseAlphabet from "../data/Japanese";
 
 const HiraganaForm = () => {
