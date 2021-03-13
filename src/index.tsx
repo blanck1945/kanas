@@ -5,8 +5,6 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Layout from "./layout/Layout";
 
-import "./scss/main.scss";
-
 ReactDOM.render(
   <React.StrictMode>
     <Layout>

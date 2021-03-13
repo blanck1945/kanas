@@ -51,6 +51,81 @@ const hiragana: KanaInterface[] = [
     kana: "こ",
     sound: "",
   },
+  {
+    romanji: "sa",
+    kana: "さ",
+    sound: "",
+  },
+  {
+    romanji: "shi",
+    kana: "し",
+    sound: "",
+  },
+  {
+    romanji: "su",
+    kana: "す",
+    sound: "",
+  },
+  {
+    romanji: "se",
+    kana: "せ",
+    sound: "",
+  },
+  {
+    romanji: "so",
+    kana: "そ",
+    sound: "",
+  },
+  {
+    romanji: "ta",
+    kana: "た",
+    sound: "",
+  },
+  {
+    romanji: "chi",
+    kana: "ち",
+    sound: "",
+  },
+  {
+    romanji: "tsu",
+    kana: "つ",
+    sound: "",
+  },
+  {
+    romanji: "te",
+    kana: "て",
+    sound: "",
+  },
+  {
+    romanji: "to",
+    kana: "と",
+    sound: "",
+  },
+  {
+    romanji: "na",
+    kana: "な",
+    sound: "",
+  },
+  {
+    romanji: "ni",
+    kana: "に",
+    sound: "",
+  },
+  {
+    romanji: "nu",
+    kana: "ぬ",
+    sound: "",
+  },
+  {
+    romanji: "ne",
+    kana: "ね",
+    sound: "",
+  },
+  {
+    romanji: "no",
+    kana: "の",
+    sound: "",
+  },
 ];
 
 export default hiragana;

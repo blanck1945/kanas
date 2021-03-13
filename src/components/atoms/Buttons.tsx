@@ -7,9 +7,16 @@ interface ButtonsInterface {
   func?: any;
   width?: string;
   margin?: string;
+  disabledState?: any;
 }
 
-const Buttons = ({ children, func, width, margin }: ButtonsInterface) => {
+const Buttons = ({
+  children,
+  func,
+  width,
+  margin,
+  disabledState,
+}: ButtonsInterface) => {
   // Global Styles.
   const {
     colors: { mainBlue, mainGray },
@@ -31,7 +38,20 @@ const Buttons = ({ children, func, width, margin }: ButtonsInterface) => {
     border-radius: 8px;
   `;
 
-  return <Button onClick={(e) => func(e)}>{children}</Button>;
+  return (
+    <>
+      {disabledState ? (
+        <Button
+          onClick={(e) => func(e)}
+          disabled={!disabledState ? true : false}
+        >
+          {children}
+        </Button>
+      ) : (
+        <Button onClick={(e) => func(e)}>{children}</Button>
+      )}
+    </>
+  );
 };
 
 export default Buttons;

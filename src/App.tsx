@@ -1,20 +1,25 @@
 import React, { useState } from "react";
-import "./scss/main.scss";
 import { hot } from "react-hot-loader/root";
 import OptionBtn from "./components/OptionBtn";
 import styled from "styled-components";
 import KanaRow from "./components/KanaRow";
 
+const AppStyle = styled.div`
+  box-sizing: border-box;
+  margin: 0;
+`;
+
 // Hiragana && Katakana buttons.
 const ButtonDiv = styled.div`
   height: 100px;
-  width: 100%;
+  width: 50%;
   margin: auto;
   display: flex;
   align-items: center;
   justify-content: space-evenly;
 `;
 
+// GeneralDiv.
 const GeneralDiv = styled.div`
   width: 90%;
   height: 400px;
@@ -22,11 +27,11 @@ const GeneralDiv = styled.div`
 `;
 
 const App: any = () => {
+  // Hook to handle app state.
   const [workState, setWorkState] = useState<string>("no-work");
-  const [amountOfKanas, setAmountOfKanas] = useState<number>(9);
 
   // Styled div.
-  const Container = styled.div`
+  const ContainerStyled = styled.div`
     height: 100%;
     width: 100%;
     display: flex;
@@ -35,32 +40,23 @@ const App: any = () => {
     background-color: #e4e4e4;
   `;
 
-  const kanaDis = () => {
-    const n = 1;
-    return [...Array(n)].map((e, i) => (
-      <KanaRow amountOfKanas={amountOfKanas} key={i} />
-    ));
-  };
-
+  // Default state of Application.
   const NoWorkState = () => {
     return (
-      <Container>
+      <ContainerStyled>
         <h3>Please, select one Kana to start.</h3>
-      </Container>
+      </ContainerStyled>
     );
   };
 
-  const KanaContainerDis = () => {
-    return <KanaRow amountOfKanas={3} />;
+  // Hiragana/Katakana display Row.
+  const KanaContainerDis = (props: any) => {
+    return <KanaRow />;
   };
 
-  const btnFunc = {
-    value: "working",
-    setState: setWorkState,
-  };
-
+  // Close Button Component.
   const closeBtn = () => {
-    if (workState == "working") {
+    if (workState === "working") {
       const btnFunc = {
         value: "no-work",
         setState: setWorkState,
@@ -73,17 +69,37 @@ const App: any = () => {
     }
   };
 
+  // Buttons configuration
+  const buttonsConfig = {
+    btnFuncHiragana: {
+      value: "working",
+      alphabet: "hiragana",
+      setState: setWorkState,
+    },
+    btnFuncKatakana: {
+      value: "working",
+      alphabet: "katakana",
+      setState: setWorkState,
+    },
+  };
+
   return (
-    <div className="App">
+    <AppStyle>
       <ButtonDiv>
-        <OptionBtn {...btnFunc}>Hiragana</OptionBtn>
-        <OptionBtn {...btnFunc}>Katakana</OptionBtn>
+        <OptionBtn {...buttonsConfig.btnFuncHiragana}>Hiragana</OptionBtn>
+        <OptionBtn {...buttonsConfig.btnFuncKatakana}>Katakana</OptionBtn>
       </ButtonDiv>
       <GeneralDiv>
-        {workState == "no-work" ? <NoWorkState /> : <KanaContainerDis />}
+        {workState === "no-work" ? (
+          <NoWorkState />
+        ) : workState === "hiragana" ? (
+          <KanaContainerDis setWorkState={setWorkState} />
+        ) : (
+          <KanaContainerDis />
+        )}
       </GeneralDiv>
       {closeBtn()}
-    </div>
+    </AppStyle>
   );
 };
 

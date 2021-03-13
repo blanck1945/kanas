@@ -23,8 +23,8 @@ const OptionBtn = ({
   exit,
 }: OptionBtnProps) => {
   const Button = styled.span`
-    height: 45px;
-    width: ${exit ? "60px" : "90px"};
+    height: 25px;
+    width: ${exit ? "150px" : "90px"};
     background-color: ${mainGray};
     color: ${mainBlue};
     border: 1px solid ${mainBlue};

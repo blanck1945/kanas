@@ -1,44 +1,76 @@
 import React, { useState } from "react";
+import JapaneseAlphabet from "../data/Japanese";
 
 const HiraganaForm = () => {
+  const { allHiragana } = JapaneseAlphabet;
+
+  const getWord = () => {
+    return allHiragana[Math.floor(Math.random() * allHiragana.length)];
+  };
+
   const [hiraganaForm, setHirganaForm] = useState({
-    formBuilder: {
-      firstRow: [
-        {
-          name: "row1res1",
-        },
-        {
-          name: "row1res2",
-        },
-        {
-          name: "row1res3",
-        },
-      ],
-      secondRow: [
-        {
-          name: "row2res1",
-        },
-        {
-          name: "row2res2",
-        },
-        {
-          name: "row2res3",
-        },
-      ],
-    },
-    initialValues: {
-      row1res1: "",
-      row1res2: "",
-      row1res3: "",
-      row2res1: "",
-      row2res2: "",
-      row2res3: "",
-    },
-    validationSchame: "",
-    onSubmit: (values: any, e: any) => {
-      e.preventDefault();
-      console.log(values);
-    },
+    formBuilder: [
+      {
+        word: getWord,
+        name: "res1",
+        value: "",
+        response: "",
+      },
+      {
+        word: getWord,
+        name: "res2",
+        value: "",
+        response: "",
+      },
+      {
+        word: getWord,
+        name: "res3",
+        value: "",
+        response: "",
+      },
+      {
+        word: getWord,
+        name: "res4",
+        value: "",
+        response: "",
+      },
+      {
+        word: getWord,
+        name: "res5",
+        value: "",
+        response: "",
+      },
+      {
+        word: getWord,
+        name: "res6",
+        value: "",
+        response: "",
+      },
+      {
+        word: getWord,
+        name: "res7",
+        value: "",
+        response: "",
+      },
+      {
+        word: getWord,
+        name: "res8",
+        value: "",
+        response: "",
+      },
+      {
+        word: getWord,
+        name: "res9",
+        value: "",
+        response: "",
+      },
+      {
+        word: getWord,
+        name: "res10",
+        value: "",
+        response: "",
+      },
+    ],
   });
 
   return {
