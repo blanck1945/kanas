@@ -8,9 +8,10 @@ interface LayoutProps {
   children: JSX.Element | JSX.Element[];
 }
 
-const Main = styled.main`
+// Main Styled Div.
+const MainStyle = styled.main`
   width: 100%;
-  height: 80vh;
+  height: 60vh;
 `;
 
 const Layout = ({ children }: LayoutProps) => {
@@ -26,7 +27,7 @@ const Layout = ({ children }: LayoutProps) => {
         />
       </Helmet>
       <Navigation />
-      <Main>{children}</Main>
+      <MainStyle>{children}</MainStyle>
       <Footer />
     </>
   );

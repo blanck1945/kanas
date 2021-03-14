@@ -4,12 +4,17 @@ import ReactDOM from "react-dom";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import Layout from "./layout/Layout";
+import { BrowserRouter } from "react-router-dom";
+
+import "./styles/global.css";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Layout>
-      <App />
-    </Layout>
+    <BrowserRouter>
+      <Layout>
+        <App />
+      </Layout>
+    </BrowserRouter>
   </React.StrictMode>,
   document.getElementById("root")
 );
