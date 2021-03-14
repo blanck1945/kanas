@@ -26,6 +26,9 @@ const DashPage = () => {
   // Hook to handle app state.
   const [workState, setWorkState] = useState<string>("no-work");
 
+  // Hook to handle alphabet selection.
+  const [alphabet, setAlphabet] = useState<string>("none");
+
   // Styled div.
   const ContainerStyled = styled.div`
     height: 100%;
@@ -47,7 +50,7 @@ const DashPage = () => {
 
   // Hiragana/Katakana display Row.
   const KanaContainerDis = (props: any) => {
-    return <KanaRow />;
+    return <KanaRow kana={alphabet} />;
   };
 
   // Close Button Component.
@@ -71,11 +74,13 @@ const DashPage = () => {
       value: "working",
       alphabet: "hiragana",
       setState: setWorkState,
+      setAlphabet: setAlphabet,
     },
     btnFuncKatakana: {
       value: "working",
       alphabet: "katakana",
       setState: setWorkState,
+      setAlphabet: setAlphabet,
     },
   };
 

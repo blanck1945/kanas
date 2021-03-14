@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import HiraganaForm from "../form/HiraganaForm";
+import KatakanaForm from "../form/KatakanaForm";
 import Buttons from "./atoms/Buttons";
 import KanaInput from "./KanaInput";
 
@@ -16,9 +17,17 @@ const KanaRowStyle = styled.div`
   display: flex;
 `;
 
-const KanaRow = () => {
-  // Hook to handler form fields and props.
+interface KanaRowProps {
+  kana: string;
+}
+
+const KanaRow = ({ kana }: KanaRowProps) => {
+  console.log(kana);
+  // Hook to handler form fields and props - Hiragana.
   const { hiraganaForm, setHirganaForm } = HiraganaForm();
+
+  // Hook to handler form fields and props - Katakana.
+  const { katakanaForm, setKatakanaForm } = KatakanaForm();
 
   // Hook to handle component reload.
   const [reload, setReload] = useState<any>(false);
@@ -28,10 +37,17 @@ const KanaRow = () => {
 
   // Function to handler inputs
   const setInputValue = (e: any) => {
-    setHirganaForm({
-      ...hiraganaForm,
-      [e.target.name]: e.target.value,
-    });
+    if (kana === "hiragana") {
+      setHirganaForm({
+        ...hiraganaForm,
+        [e.target.name]: e.target.value,
+      });
+    } else {
+      setKatakanaForm({
+        ...katakanaForm,
+        [e.target.name]: e.target.value,
+      });
+    }
   };
 
   // Function to handler submitting.
@@ -53,8 +69,19 @@ const KanaRow = () => {
     setReload(true);
   };
 
-  // Kanas Inputs.
+  // Kanas Inputs hiragana.
   const HiraganaFormInputs = hiraganaForm.formBuilder.map((el) => {
+    return (
+      <KanaInput
+        kanaOptions={el}
+        handler={setInputValue}
+        responseReport={responseReport}
+      />
+    );
+  });
+
+  // Kanas Inputs katakana.
+  const KatakanaFormInputs = katakanaForm.formBuilder.map((el) => {
     return (
       <KanaInput
         kanaOptions={el}
@@ -70,7 +97,9 @@ const KanaRow = () => {
         <p></p>
       ) : (
         <>
-          <KanaRowStyle>{HiraganaFormInputs}</KanaRowStyle>
+          <KanaRowStyle>
+            {kana === "hiragana" ? HiraganaFormInputs : KatakanaFormInputs}
+          </KanaRowStyle>
           <ButtonsDivStyle>
             <Buttons width="80px" func={getFormValues}>
               Press

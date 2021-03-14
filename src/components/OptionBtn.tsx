@@ -7,6 +7,8 @@ interface OptionBtnProps {
   exit?: boolean;
   value: string;
   setState: React.Dispatch<React.SetStateAction<string>>;
+  setAlphabet?: React.Dispatch<React.SetStateAction<string>>;
+  alphabet?: string;
   children: string;
 }
 
@@ -20,6 +22,8 @@ const OptionBtn = ({
   children,
   value,
   setState,
+  setAlphabet,
+  alphabet,
   exit,
 }: OptionBtnProps) => {
   const Button = styled.span`
@@ -38,7 +42,14 @@ const OptionBtn = ({
     border-radius: 8px;
   `;
 
-  return <Button onClick={() => setState(value)}>{children}</Button>;
+  const setBtnState = () => {
+    setState(value);
+    if (setAlphabet && alphabet) {
+      setAlphabet(alphabet);
+    }
+  };
+
+  return <Button onClick={() => setBtnState()}>{children}</Button>;
 };
 
 export default OptionBtn;
