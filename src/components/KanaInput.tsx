@@ -17,10 +17,17 @@ const KanaInputStyle = styled.input`
   margin-top: 3px;
 `;
 
+// Kana div.
+const KanaDivDisplayStyle = styled.div`
+  font-size: 30px;
+`;
+
 // Kana Input Interface.
 interface KanaInputInterface {
   kanaOptions: any;
-  handler: any;
+  handler?: any;
+  words?: boolean;
+  setInputValue?: any;
   responseReport?: boolean;
 }
 
@@ -28,7 +35,7 @@ const KanaInput = ({ kanaOptions, responseReport }: KanaInputInterface) => {
   // Properies from Kana form.
   const { word, name, value } = kanaOptions;
 
-  // Function to get on Kana.
+  // Function to get Kana.
   const memo = useMemo(() => {
     return word();
   }, [word]);
@@ -58,13 +65,17 @@ const KanaInput = ({ kanaOptions, responseReport }: KanaInputInterface) => {
 
   return (
     <KanaDivStyle>
-      <div>{memo.kana}</div>
+      <KanaDivDisplayStyle>{memo.kana}</KanaDivDisplayStyle>
       <KanaInputStyle
         name={name}
         value={input.res}
         onChange={(e) => setInputValue(e)}
       />
-      {responseReport && <ResponseStyle>{input.response}</ResponseStyle>}
+      {responseReport && (
+        <ResponseStyle>
+          {input.response} - {memo.romanji}
+        </ResponseStyle>
+      )}
     </KanaDivStyle>
   );
 };

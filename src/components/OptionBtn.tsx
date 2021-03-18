@@ -27,12 +27,12 @@ const OptionBtn = ({
   exit,
 }: OptionBtnProps) => {
   const Button = styled.span`
-    height: 25px;
+    height: 45px;
     width: ${exit ? "150px" : "90px"};
     background-color: ${mainGray};
     color: ${mainBlue};
     border: 1px solid ${mainBlue};
-    padding: 12px;
+    padding: 12px 80px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;

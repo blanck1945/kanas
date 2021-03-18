@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import styled from "styled-components";
 import HiraganaForm from "../form/HiraganaForm";
 import KatakanaForm from "../form/KatakanaForm";
+import WordForm from "../form/WordForm";
 import Buttons from "./atoms/Buttons";
 import KanaInput from "./KanaInput";
 
@@ -29,6 +30,9 @@ const KanaRow = ({ kana }: KanaRowProps) => {
   // Hook to handler form fields and props - Katakana.
   const { katakanaForm, setKatakanaForm } = KatakanaForm();
 
+  // Hook to handler form fields and props - Katakana.
+  const { wordForm, setWordForm } = WordForm();
+
   // Hook to handle component reload.
   const [reload, setReload] = useState<any>(false);
 
@@ -42,9 +46,14 @@ const KanaRow = ({ kana }: KanaRowProps) => {
         ...hiraganaForm,
         [e.target.name]: e.target.value,
       });
-    } else {
+    } else if (kana === "katakana") {
       setKatakanaForm({
         ...katakanaForm,
+        [e.target.name]: e.target.value,
+      });
+    } else {
+      setWordForm({
+        ...wordForm,
         [e.target.name]: e.target.value,
       });
     }
@@ -91,6 +100,17 @@ const KanaRow = ({ kana }: KanaRowProps) => {
     );
   });
 
+  // Word Inputs.
+  const WordFormInputs = wordForm.formBuilder.map((el) => {
+    return (
+      <KanaInput
+        kanaOptions={el}
+        handler={setInputValue}
+        responseReport={responseReport}
+      />
+    );
+  });
+
   return (
     <>
       {reload ? (
@@ -98,7 +118,11 @@ const KanaRow = ({ kana }: KanaRowProps) => {
       ) : (
         <>
           <KanaRowStyle>
-            {kana === "hiragana" ? HiraganaFormInputs : KatakanaFormInputs}
+            {kana === "hiragana"
+              ? HiraganaFormInputs
+              : kana === "katakana"
+              ? KatakanaFormInputs
+              : WordFormInputs}
           </KanaRowStyle>
           <ButtonsDivStyle>
             <Buttons width="80px" func={getFormValues}>

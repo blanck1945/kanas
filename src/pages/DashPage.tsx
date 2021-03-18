@@ -39,6 +39,13 @@ const DashPage = () => {
     background-color: #e4e4e4;
   `;
 
+  // Kana Span.
+  const KanaSpanStyle = styled.span`
+    background-color: #e4e4e4;
+    padding: 8px 16px;
+    font-size: 32px;
+  `;
+
   // Default state of Application.
   const NoWorkState = () => {
     return (
@@ -82,19 +89,34 @@ const DashPage = () => {
       setState: setWorkState,
       setAlphabet: setAlphabet,
     },
+    btnFuncWords: {
+      value: "working",
+      alphabet: "words",
+      setState: setWorkState,
+      setAlphabet: setAlphabet,
+    },
   };
 
   return (
     <AppStyle>
       <ButtonDiv>
-        <OptionBtn {...buttonsConfig.btnFuncHiragana}>Hiragana</OptionBtn>
-        <OptionBtn {...buttonsConfig.btnFuncKatakana}>Katakana</OptionBtn>
+        {workState === "no-work" ? (
+          <>
+            <OptionBtn {...buttonsConfig.btnFuncHiragana}>Hiragana</OptionBtn>
+            <OptionBtn {...buttonsConfig.btnFuncKatakana}>Katakana</OptionBtn>
+            <OptionBtn {...buttonsConfig.btnFuncWords}>
+              Words (experimental)
+            </OptionBtn>
+          </>
+        ) : (
+          <KanaSpanStyle>{alphabet}</KanaSpanStyle>
+        )}
       </ButtonDiv>
       <GeneralDiv>
         {workState === "no-work" ? (
           <NoWorkState />
         ) : workState === "hiragana" ? (
-          <KanaContainerDis setWorkState={setWorkState} />
+          <KanaContainerDis />
         ) : (
           <KanaContainerDis />
         )}
