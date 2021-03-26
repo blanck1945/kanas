@@ -7,10 +7,11 @@ const AppStyle = styled.div``;
 
 // Hiragana && Katakana buttons.
 const ButtonDiv = styled.div`
-  height: 100px;
-  width: 50%;
+  width: 70%;
   margin: auto;
+  padding-top: 72px;
   display: flex;
+  margin-bottom: 30px;
   align-items: center;
   justify-content: space-evenly;
 `;
@@ -23,6 +24,9 @@ const GeneralDiv = styled.div`
 `;
 
 const DashPage = () => {
+  // Hook to handle information display.
+  const [infoState, setInfoState] = useState<string>("none");
+
   // Hook to handle app state.
   const [workState, setWorkState] = useState<string>("no-work");
 
@@ -37,13 +41,6 @@ const DashPage = () => {
     align-items: center;
     justify-content: center;
     background-color: #e4e4e4;
-  `;
-
-  // Kana Span.
-  const KanaSpanStyle = styled.span`
-    background-color: #e4e4e4;
-    padding: 8px 16px;
-    font-size: 32px;
   `;
 
   // Default state of Application.
@@ -65,6 +62,8 @@ const DashPage = () => {
     if (workState === "working") {
       const btnFunc = {
         value: "no-work",
+        infoState: infoState,
+        setInfoState: setInfoState,
         setState: setWorkState,
       };
       return (
@@ -80,19 +79,25 @@ const DashPage = () => {
     btnFuncHiragana: {
       value: "working",
       alphabet: "hiragana",
+      infoState: infoState,
       setState: setWorkState,
+      setInfoState: setInfoState,
       setAlphabet: setAlphabet,
     },
     btnFuncKatakana: {
       value: "working",
       alphabet: "katakana",
+      infoState: infoState,
       setState: setWorkState,
+      setInfoState: setInfoState,
       setAlphabet: setAlphabet,
     },
     btnFuncWords: {
       value: "working",
       alphabet: "words",
+      infoState: infoState,
       setState: setWorkState,
+      setInfoState: setInfoState,
       setAlphabet: setAlphabet,
     },
   };
@@ -100,17 +105,9 @@ const DashPage = () => {
   return (
     <AppStyle>
       <ButtonDiv>
-        {workState === "no-work" ? (
-          <>
-            <OptionBtn {...buttonsConfig.btnFuncHiragana}>Hiragana</OptionBtn>
-            <OptionBtn {...buttonsConfig.btnFuncKatakana}>Katakana</OptionBtn>
-            <OptionBtn {...buttonsConfig.btnFuncWords}>
-              Words (experimental)
-            </OptionBtn>
-          </>
-        ) : (
-          <KanaSpanStyle>{alphabet}</KanaSpanStyle>
-        )}
+        <OptionBtn {...buttonsConfig.btnFuncHiragana}>Hiragana</OptionBtn>
+        <OptionBtn {...buttonsConfig.btnFuncKatakana}>Katakana</OptionBtn>
+        <OptionBtn {...buttonsConfig.btnFuncWords}>Words</OptionBtn>
       </ButtonDiv>
       <GeneralDiv>
         {workState === "no-work" ? (

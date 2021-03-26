@@ -1,4 +1,4 @@
-import { KanaInterface } from "./kanaInterface";
+import { KanaInterface } from "../interfaces/Kana";
 
 const katakana: KanaInterface[] = [
     {

@@ -92,31 +92,3 @@ const KanaFormInputs = ({
 };
 
 export default KanaFormInputs;
-
-/*
-
-  // Function to handler inputs
-  const setInputValue = (e: any) => {
-    switch (alphabet) {
-      case "hiragana":
-        setHirganaForm({
-          ...hiraganaForm,
-          [e.target.name]: e.target.value,
-        });
-        break;
-      case "katakana":
-        setKatakanaForm({
-          ...katakanaForm,
-          [e.target.name]: e.target.value,
-        });
-        break;
-      case "word":
-        setWordForm({
-          ...wordForm,
-          [e.target.name]: e.target.value,
-        });
-        break;
-      default:
-        return "no-alpabhet";
-    }
-  };*/

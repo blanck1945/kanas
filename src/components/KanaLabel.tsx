@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import JapaneseAlphabet from "../data/Japanese";
-import { KanaInterface } from "../data/kanaInterface";
+import { KanaInterface } from "../interfaces/Kana";
 
 const KanaLabel = () => {
   const { allHiragana } = JapaneseAlphabet;

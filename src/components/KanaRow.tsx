@@ -3,8 +3,13 @@ import styled from "styled-components";
 import HiraganaForm from "../form/HiraganaForm";
 import KatakanaForm from "../form/KatakanaForm";
 import WordForm from "../form/WordForm";
+import GlobalStyles from "../styles/GlobalStyles";
 import Buttons from "./atoms/Buttons";
 import KanaInput from "./KanaInput";
+
+const {
+  colors: { mainRed },
+} = GlobalStyles;
 
 // ButtonDiv.
 const ButtonsDivStyle = styled.div`
@@ -16,6 +21,11 @@ const ButtonsDivStyle = styled.div`
 // KanaRow.
 const KanaRowStyle = styled.div`
   display: flex;
+  padding-top: 10px;
+  border-radius: 12px;
+  border: 1px solid ${mainRed};
+  padding-bottom: 25px;
+  background-color: white;
 `;
 
 interface KanaRowProps {

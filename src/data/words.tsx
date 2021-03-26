@@ -17,6 +17,30 @@ const wordsAlphabet = [
     translation: "Ayuda por favor",
     sound: "",
   },
+  {
+    romanji: "kodomo",
+    kana: "こども",
+    translation: "niño",
+    sound: "",
+  },
+  {
+    romanji: "abunai",
+    kana: "あぶない",
+    translation: "peligroso",
+    sound: "",
+  },
+  {
+    romanji: "chigaimasu",
+    kana: "ちがいます",
+    translation: "ser distinto",
+    sound: "",
+  },
+  {
+    romanji: "kutsu",
+    kana: "くつ",
+    translation: "zapato",
+    sound: "",
+  },
 ];
 
 export default wordsAlphabet;

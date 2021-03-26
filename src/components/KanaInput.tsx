@@ -1,26 +1,12 @@
 import React, { useMemo, useState } from "react";
 import styled from "styled-components";
-
-// Single Kana Div.
-const KanaDivStyle = styled.div`
-  display: flex;
-  width: 10%;
-  flex-direction: column;
-  align-items: center;
-`;
-
-// Kana styles input.
-const KanaInputStyle = styled.input`
-  width: 30px;
-  height: 25px;
-  margin: 0px 8px;
-  margin-top: 3px;
-`;
-
-// Kana div.
-const KanaDivDisplayStyle = styled.div`
-  font-size: 30px;
-`;
+import {
+  KanaDivStyle,
+  KanaInputStyle,
+  KanaDivDisplayStyle,
+  KanaWordStyle,
+  KanaWordInput,
+} from "./styledComponents/KanaInputStyled";
 
 // Kana Input Interface.
 interface KanaInputInterface {
@@ -62,6 +48,24 @@ const KanaInput = ({ kanaOptions, responseReport }: KanaInputInterface) => {
     border-radius: 5px;
     background-color: ${input.response === "Correcto" ? "green" : "red"};
   `;
+
+  if (word) {
+    return (
+      <KanaWordStyle>
+        <KanaDivDisplayStyle>{memo.kana}</KanaDivDisplayStyle>
+        <KanaWordInput
+          name={name}
+          value={input.res}
+          onChange={(e) => setInputValue(e)}
+        />
+        {responseReport && (
+          <ResponseStyle>
+            {input.response} - {memo.romanji}
+          </ResponseStyle>
+        )}
+      </KanaWordStyle>
+    );
+  }
 
   return (
     <KanaDivStyle>

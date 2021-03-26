@@ -1,5 +1,5 @@
+import { KanaInterface } from "../interfaces/Kana";
 import hiragana from "./hiragana";
-import { KanaInterface } from "./kanaInterface";
 import katakana from "./katakana";
 import wordsAlphabet from "./words";
 
